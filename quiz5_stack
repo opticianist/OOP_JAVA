@@ -1,0 +1,46 @@
+/**
+Bu java dosyası "("  ")" lerin kapanıp kapanmadığını kontrol eder...
+**/
+
+import java.util.Stack;
+
+public class Main {
+
+	public static void main(String[] args) {
+		String m1="(merhaba))";
+		String m2="(((merz))))";
+		String m3="(terk)";
+
+		System.out.println(isBalanced(m1));
+		System.out.println(isBalanced(m2));
+		System.out.println(isBalanced(m3));
+
+	}
+
+	public static boolean isBalanced(String s) {
+		int size=s.length();
+		Stack <String> myStack=new Stack <String>();
+
+		for(int i=0; i<size; i++) {
+			if(s.charAt(i)=='(') {
+				myStack.push("(");
+			}
+			else if(s.charAt(i)==')') {
+
+				if(!myStack.isEmpty()) {
+					myStack.pop();
+				}
+				else {
+					return false;
+				}
+			}
+
+		}
+
+		if(myStack.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
+}
